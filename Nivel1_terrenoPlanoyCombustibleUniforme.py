@@ -5,14 +5,15 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.animation import  FuncAnimation
 from scipy.interpolate import griddata
 
-
-# lectura del mapa
+## Este codigo es muy similar al original proporcionado por el docente
+## la unica diferencia es que en la visualizacion el terreno es plano
+## ya que la parte de la simulacion no cambia, por que aunque en el codigo proporcionado la vizualizacion
+## es en 3d, no se toma en cuenta las alturas para la simulacion
 gdf = gdp.read_file("elevaciones.gpkg")
 if "altura" in gdf.columns:
     elev_col = "altura"
 else:
     elev_col = gdf.columns[-1]
-    #si no se llama exactamente altura, se toma la ultima columna
 print(gdf["altura"])
 print(gdf.geometry)
 
