@@ -8,7 +8,7 @@ from scipy.interpolate import griddata
 
 
 # lectura del mapa
-gdf = gdp.read_file("elevaciones.gpkg")
+gdf = gdp.read_file("1.-Modelado\elevaciones.gpkg")
 if "altura" in gdf.columns:
     elev_col = "altura"
 else:
@@ -46,10 +46,21 @@ def laplacian(Z):
     return (np.roll(Z, 1, 0) + np.roll(Z, -1, 0) + np.roll(Z, 1, 1) + np.roll(Z, -1, 1) - 4 * Z)
 
 def advection(T):
-    """ Transporte por viento (advección simple) """
-    dTx = np.roll(T, -1, axis=1) - np.roll(T, 1, axis=1)  # gradiente en x
-    dTy = np.roll(T, -1, axis=0) - np.roll(T, 1, axis=0)  # gradiente en y
+    dTx = np.zeros_like(T)
+    dTy = np.zeros_like(T)
+
+    if wind_dir[0] > 0:
+        dTx = T - np.roll(T, 1, axis=1)   # viento → derecha (tomo vecino izq.)
+    elif wind_dir[0] < 0:
+        dTx = np.roll(T, -1, axis=1) - T  # viento ← izquierda (tomo vecino der.)
+
+    if wind_dir[1] > 0:
+        dTy = T - np.roll(T, 1, axis=0)   # viento ↓ abajo (tomo vecino arriba)
+    elif wind_dir[1] < 0:
+        dTy = np.roll(T, -1, axis=0) - T  # viento ↑ arriba (tomo vecino abajo)
+
     return -(wind_dir[0] * dTx + wind_dir[1] * dTy) * wind_speed
+
 
 def get_Tem(T):
     S = (T > Tign).astype(float) * (30.0 * (1 - H))
