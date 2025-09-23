@@ -34,7 +34,7 @@ T = np.zeros_like(Z)
 cx, cy = nx // 2, ny // 2
 T[cx-2:cx+3, cy-2:cy+3] = 1000
 D = 1.5
-alpha = 0.01
+alpha = 0.1
 Tign = 10
 dt= 0.1
 

@@ -102,5 +102,6 @@ Estamos simulando un terreno con las siguientes supuestos:
     Es una temperatura al la cual algun combustible puede mantenerse constante, si necesidad de ser alimentado por otra fuente de calor cercana.
     - ¿Entonces acaso en un bosque e todos los lugares hay algun combustible?
     No realmente, ya que hay zonas donde hay rocas sin ningun combustible encima, pero cabe aclarar que cuando nos referimos a combustible puede ser cualquier otra fuente organica o inorganica que se encuentre en nuestro ambiente. Por ejemplo la tierra no es consumida por el fuego pero si los elementos sobre ella como algun pasto seco, maderas,etc. Todos estos combustibles llegan un punto en los que son consumidos totalmente.
-    -  ¿Solo los combustibles tienen temperatura de ignición?
+    - ¿Solo los combustibles tienen temperatura de ignición?
     Sí, exactamente. El concepto de "temperatura de ignición" solo se aplica a las sustancias que pueden sufrir combustión, es decir, a los combustibles.
+  - Aunque las visualizaciones estan en 3d al momento de hacer la simulacion no tomamos en cuenta como afecta las diferentes alturas del terreno a nuestra simulacion.
