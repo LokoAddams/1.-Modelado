@@ -6,7 +6,7 @@ from matplotlib.animation import FuncAnimation
 from scipy.interpolate import griddata
 
 # --- Carga de datos (sin cambios) ---
-gdf = gdp.read_file("elevaciones.gpkg")
+gdf = gdp.read_file("1.-Modelado\elevaciones.gpkg")
 if "altura" in gdf.columns:
     elev_col = "altura"
 else:

@@ -9,7 +9,7 @@ from scipy.interpolate import griddata
 ## la unica diferencia es que en la visualizacion el terreno es plano
 ## ya que la parte de la simulacion no cambia, por que aunque en el codigo proporcionado la vizualizacion
 ## es en 3d, no se toma en cuenta las alturas para la simulacion
-gdf = gdp.read_file("elevaciones.gpkg")
+gdf = gdp.read_file("1.-Modelado\elevaciones.gpkg")
 if "altura" in gdf.columns:
     elev_col = "altura"
 else:
