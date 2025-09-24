@@ -42,15 +42,17 @@ def interpolate_to_grid(gdf, value_col, xi, yi, method="cubic", fill_value=0.0):
     V = np.nan_to_num(V, nan=fill_value)
     return X, Y, V
 
-def normalize_ids_to_01(A):
-    """Normaliza matriz de IDs/códigos a [0,1] por rango (min->0, max->1)."""
+def normalize_ids_to_01(A, low=0.1, high=1.0):
+    """
+    Genera un mapa de humedad aleatorio en [low, high]
+    solo para celdas con valor > 0 en A (zonas húmedas).
+    Las celdas con valor 0 quedan en 0 (seco).
+    """
     A = A.astype(float)
-    amin, amax = float(np.nanmin(A)), float(np.nanmax(A))
-    if amax > amin:
-        A2 = (A - amin) / (amax - amin)
-    else:
-        A2 = np.zeros_like(A)
-    return np.clip(A2, 0.0, 1.0)
+    H = np.zeros_like(A, dtype=float)
+    mask = A > 0
+    H[mask] = np.random.uniform(low, high, size=mask.sum())
+    return H
 
 # ===================
 # Lectura del terreno
