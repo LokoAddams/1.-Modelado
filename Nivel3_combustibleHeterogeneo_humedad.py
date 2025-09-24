@@ -6,7 +6,7 @@ from matplotlib.animation import FuncAnimation
 from scipy.interpolate import griddata
 
 # lectura del mapa
-gdf = gdp.read_file("elevaciones.gpkg")
+gdf = gdp.read_file("elevaciones2.gpkg")
 if "altura" in gdf.columns:
     elev_col = "altura"
 else:
@@ -28,9 +28,9 @@ T = np.zeros_like(Z)
 cx, cy = nx // 2, ny // 2
 T[cx-2:cx+3, cy-2:cy+3] = 1000  # Foco inicial
 
-D = 2.5
+D = 0.4
 alpha = 0.01
-Tign = 10
+Tign = 200
 dt = 0.1
 # --- Nivel 3: Inicio de la Implementación ---
 
